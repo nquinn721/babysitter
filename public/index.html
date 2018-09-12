@@ -3,9 +3,52 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Babysitter</title>
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 	<h1>Babysitter</h1>
+	<div id="main">
+		<div>
+			Start Time: &nbsp;
+			<input type="number" id="start-time">
+		</div>
+		<div>
+			Bed Time: &nbsp;
+			<input type="number" id="bed-time">
+		</div>
+		<div>
+			End Time: &nbsp;
+			<input type="number" id="end-time">
+		</div>
+
+		<div>
+			<button id="calculate">Calculate
+			</button> &nbsp;
+			<div>$ <span id="calculated-wage">0</span>.00 / hr</div>
+		</div>
+
+	</div>
 	<script src="js/babysitter.js"></script>
+
+	<script>
+		const babysitter = new Babysitter;
+
+		document.querySelector('#start-time').onkeyup = (e) => {
+			babysitter.setStartTime(e.target.value);
+		}
+
+		document.querySelector('#bed-time').onkeyup = (e) => {
+			babysitter.setBedTime(e.target.value);
+		}
+
+		document.querySelector('#end-time').onkeyup = (e) => {
+			babysitter.setEndTime(e.target.value);
+		}
+
+		document.querySelector('#calculate').onclick = () => {
+			console.log(babysitter.calculateWage());
+			document.querySelector('#calculated-wage').innerHTML = babysitter.calculateWage();
+		}
+	</script>
 </body>
 </html>
